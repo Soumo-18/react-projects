@@ -1,16 +1,49 @@
-# React + Vite
+# Random Cat Viewer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React app that fetches and displays a random cat breed on demand from the [FreeAPI](https://freeapi.app) database.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Fetches a random cat breed from `https://api.freeapi.app/api/v1/public/cats/cat/random`
+- Displays breed image, origin, life span, temperament tags, and description
+- Visual rating bars for child-friendliness and dog-friendliness
+- "Discover Another Cat" button to fetch a new random breed
+- Loading spinner and error state with retry button
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19
+- Tailwind CSS 4
+- Vite 8
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm install
+npm run dev
+```
+
+## Project Structure
+
+```
+src/
+├── components/
+│   └── CatCard.jsx   # Displays breed details in a card layout
+├── App.jsx           # Root component — fetches and renders the random cat
+└── main.jsx          # Entry point
+```
+
+## API
+
+Data is sourced from the public FreeAPI random cat endpoint. Each card displays:
+
+| Field | Description |
+|---|---|
+| `name` | Breed name |
+| `image` | Breed photo |
+| `origin` | Country of origin |
+| `life_span` | Average lifespan (years) |
+| `temperament` | Personality traits |
+| `description` | Breed description |
+| `child_friendly` | Child-friendliness score (0–5) |
+| `dog_friendly` | Dog-friendliness score (0–5) |
