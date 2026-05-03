@@ -1,16 +1,34 @@
-# React + Vite
+# Random Users UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React app that fetches and displays randomly generated user profiles from the [FreeAPI](https://freeapi.app) public API.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Fetches random user data from `https://api.freeapi.app/api/v1/public/randomusers`
+- Displays user cards with profile picture, name, username, email, location, age, and gender
+- Loading and error states
+- Responsive grid layout (1–4 columns)
+- Styled with Tailwind CSS v4
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19
+- Vite
+- Tailwind CSS v4
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm install
+npm run dev
+```
+
+## Project Structure
+
+```
+src/
+├── App.jsx           # Root component, data fetching & layout
+├── components/
+│   └── UserCard.jsx  # Individual user card component
+└── index.css         # Tailwind import
+```
