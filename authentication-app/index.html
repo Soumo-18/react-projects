@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Auth App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .dot-bg {
+            background-image: radial-gradient(#d1d5db 1px, transparent 1px);
+            background-size: 24px 24px;
+            background-color: #f9fafb;
+        }
+    </style>
+</head>
+<body class="dot-bg min-h-screen flex items-center justify-center font-sans antialiased p-4">
+
+    <!-- Loading Skeleton (Visible while fetching user data) -->
+    <div id="loadingState" class="bg-white border border-gray-200 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] w-full max-w-lg p-8 text-center flex flex-col items-center">
+        <svg class="animate-spin h-8 w-8 text-black mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        <p class="text-sm text-gray-500">Verifying session...</p>
+    </div>
+
+    <!-- Dashboard Card (Hidden by default until authenticated) -->
+    <div id="dashboardCard" class="hidden bg-white border border-gray-200 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] w-full max-w-lg p-8 relative overflow-hidden">
+        
+        <div class="border-b border-gray-100 pb-6 mb-6 flex justify-between items-start">
+            <div>
+                <h1 class="text-2xl font-semibold tracking-tight text-gray-900">Dashboard</h1>
+                <p class="text-sm text-gray-500 mt-1">You are securely logged in.</p>
+            </div>
+            <!-- Avatar placeholder -->
+            <div class="h-12 w-12 bg-gray-100 rounded-full flex items-center justify-center border border-gray-200">
+                <span id="avatarText" class="text-lg font-bold text-gray-600">?</span>
+            </div>
+        </div>
+
+        <!-- User Details Section -->
+        <div class="space-y-4 mb-8">
+            <div class="bg-gray-50 p-4 rounded-lg border border-gray-100">
+                <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Username</p>
+                <p id="profileUsername" class="text-base font-medium text-gray-900">Loading...</p>
+            </div>
+            
+            <div class="bg-gray-50 p-4 rounded-lg border border-gray-100">
+                <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Email Address</p>
+                <p id="profileEmail" class="text-base font-medium text-gray-900">Loading...</p>
+            </div>
+
+            <div class="bg-gray-50 p-4 rounded-lg border border-gray-100">
+                <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Account Role</p>
+                <span id="profileRole" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-black text-white mt-1">
+                    Loading...
+                </span>
+            </div>
+        </div>
+
+        <button id="logoutBtn" 
+            class="w-full bg-white border border-gray-300 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-200 transition-all flex justify-center items-center h-10">
+            <span id="logoutText">Log Out</span>
+            <svg id="logoutSpinner" class="hidden animate-spin h-5 w-5 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+        </button>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
